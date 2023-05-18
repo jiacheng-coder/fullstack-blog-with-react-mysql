@@ -1,5 +1,10 @@
 $lightGreen: #b9e7e7;
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .app {
   display: flex;
   justify-content: center;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
@@ -11,14 +12,15 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    console.log(inputs)
+    // console.log(inputs)
     setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("handleSubmit!",inputs);
     try {
-      await login(inputs)
+      await axios.post('api/auth/login',inputs)
       navigate("/");
     } catch (err) {
       setError(err.response.data);

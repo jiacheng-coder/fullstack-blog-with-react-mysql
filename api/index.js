@@ -34,3 +34,10 @@ const PORT = 8800
 app.listen(PORT,()=>{
   console.log(`${PORT} is listening!`);
 })
+
+process.on('SIGINT', function() {
+  // 在这里进行清理和关闭操作
+  // ...
+  process.exit();
+});
+

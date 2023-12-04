@@ -1,4 +1,6 @@
 $lightGreen: #b9e7e7;
+$mainRed: #91302B;
+$mainGrey: #626262;
 
 * {
   margin: 0;
@@ -9,12 +11,13 @@ $lightGreen: #b9e7e7;
   display: flex;
   justify-content: center;
   .container {
-    width: 1024px;
+    width: 100%;
 
     .link {
       text-decoration: none;
       color: inherit;
     }
+
     //LOGIN & REGISTER
 
     .auth {
@@ -69,6 +72,11 @@ $lightGreen: #b9e7e7;
     //NAVBAR
 
     .navbar {
+      background-color: #9E2625;
+      color: white;
+      height: 100px;
+      padding: 1rem 8rem;
+
       .container {
         padding: 10px 0px;
         display: flex;
@@ -76,7 +84,8 @@ $lightGreen: #b9e7e7;
         justify-content: space-between;
         .logo {
           img {
-            width: 120px;
+            width: 361px;
+            height: 77px;
           }
         }
         .links {
@@ -94,14 +103,15 @@ $lightGreen: #b9e7e7;
           }
 
           .write {
-            background-color: $lightGreen;
+            background-color: white;
+            color: $mainRed;
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 300;
+            font-weight: 400;
             border: 1px solid white;
 
             &:hover {
@@ -117,26 +127,30 @@ $lightGreen: #b9e7e7;
     //FOOTER
 
     footer {
-      margin-top: 100px;
-      padding: 20px;
-      background-color: $lightGreen;
+      font-size: 16px;
+      color: #fff;
+      line-height: 30px;
+      padding: 30px 0;
+      background-color: $mainGrey;
+
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
-      font-size: 12px;
-      img {
-        height: 50px;
-      }
+      gap: 1rem;
+      // .footer-name {
+
+      // }
     }
 
     //HOME
 
     .home {
       .posts {
-        margin-top: 50px;
+        padding: 3rem 8rem;
         display: flex;
         flex-direction: column;
-        gap: 150px;
+        gap: 100px;
 
         .post {
           display: flex;
@@ -306,7 +320,8 @@ $lightGreen: #b9e7e7;
     //WRITE
 
     .add {
-      margin-top: 20px;
+      // margin-top: 20px;
+      padding: 3rem 0;
       display: flex;
       gap: 20px;
 

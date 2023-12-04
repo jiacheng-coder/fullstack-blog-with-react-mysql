@@ -37,3 +37,13 @@ On the client side, You can learn:
 - axios
 - dompurify
 - moment
+
+## MACOS 13.x 运行指南
+
+1. 启动 mysql
+
+➜  bin sudo chown -R mysql:mysql /usr/local/mysql/data
+
+➜  bin sudo rm /usr/local/mysql/data/MacBook.local.pid
+
+➜  bin sudo /usr/local/mysql/support-files/mysql.server start

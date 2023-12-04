@@ -1,34 +1,34 @@
-import React, { useState } from "react";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
-import axios from "axios";
-import { useLocation, useNavigate } from "react-router-dom";
-import moment from "moment";
+import React, { useState } from 'react'
+import ReactQuill from 'react-quill'
+import 'react-quill/dist/quill.snow.css'
+import axios from 'axios'
+import { useLocation, useNavigate } from 'react-router-dom'
+import moment from 'moment'
 
 const Write = () => {
-  const state = useLocation().state;
-  const [title, setTitle] = useState(state?.title || "");
-  const [value, setValue] = useState(state?.desc || "");
-  
-  const [file, setFile] = useState(null);
-  const [cat, setCat] = useState(state?.cat || "");
+  const state = useLocation().state
+  const [title, setTitle] = useState(state?.title || '')
+  const [value, setValue] = useState(state?.desc || '')
+
+  const [file, setFile] = useState(null)
+  const [cat, setCat] = useState(state?.cat || '')
 
   const navigate = useNavigate()
 
   const upload = async () => {
     try {
-      const formData = new FormData();
-      formData.append("file", file);
-      const res = await axios.post("/api/upload", formData);
-      return res.data;
+      const formData = new FormData()
+      formData.append('file', file)
+      const res = await axios.post('/api/upload', formData)
+      return res.data
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
-  const handleClick = async (e) => {
-    e.preventDefault();
-    const imgUrl = await upload();
+  const handleClick = async e => {
+    e.preventDefault()
+    const imgUrl = await upload()
 
     try {
       state
@@ -36,135 +36,81 @@ const Write = () => {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
+            img: file ? imgUrl : '',
           })
         : await axios.post(`/api/posts/`, {
             title,
             desc: value,
             cat,
-            img: file ? imgUrl : "",
-            date: moment(Date.now()).format("YYYY-MM-DD HH:mm:ss"),
-          });
-          navigate("/")
+            img: file ? imgUrl : '',
+            date: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'),
+          })
+      navigate('/')
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
-  };
+  }
 
   return (
-    <div className="add">
-      <div className="content">
-        <input
-          type="text"
-          placeholder="Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <div className="editorContainer">
-          <ReactQuill
-            className="editor"
-            theme="snow"
-            value={value}
-            onChange={setValue}
-          />
+    <div className='add'>
+      <div className='content'>
+        <input type='text' placeholder='Title' value={title} onChange={e => setTitle(e.target.value)} />
+        <div className='editorContainer'>
+          <ReactQuill className='editor' theme='snow' value={value} onChange={setValue} />
         </div>
       </div>
-      <div className="menu">
-        <div className="item">
-          <h1>Publish</h1>
+      <div className='menu'>
+        <div className='item'>
+          <h1>发布文章</h1>
           <span>
-            <b>Status: </b> Draft
+            <b>文章状态: </b> 草稿
           </span>
           <span>
-            <b>Visibility: </b> Public
+            <b>可见性: </b> 公开
           </span>
-          <input
-            style={{ display: "none" }}
-            type="file"
-            id="file"
-            name=""
-            onChange={(e) => setFile(e.target.files[0])}
-          />
-          <label className="file" htmlFor="file">
-            Upload Image
+          <input style={{ display: 'none' }} type='file' id='file' name='' onChange={e => setFile(e.target.files[0])} />
+          <label className='file' htmlFor='file'>
+            上传图片
           </label>
-          <div className="buttons">
-            <button>Save as a draft</button>
-            <button onClick={handleClick}>Publish</button>
+          <div className='buttons'>
+            <button>保存为草稿</button>
+            <button onClick={handleClick}>发布</button>
           </div>
         </div>
-        <div className="item">
-          <h1>Category</h1>
-          <div className="cat">
-            <input
-              type="radio"
-              checked={cat === "art"}
-              name="cat"
-              value="art"
-              id="art"
-              onChange={(e) => setCat(e.target.value)}
-            />
-            <label htmlFor="art">Art</label>
+        <div className='item'>
+          <h1>文章分类</h1>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'art'} name='cat' value='art' id='art' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='art'>Art</label>
           </div>
-          <div className="cat">
-            <input
-              type="radio"
-              checked={cat === "science"}
-              name="cat"
-              value="science"
-              id="science"
-              onChange={(e) => setCat(e.target.value)}
-            />
-            <label htmlFor="science">Science</label>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'science'} name='cat' value='science' id='science' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='science'>Science</label>
           </div>
-          <div className="cat">
-            <input
-              type="radio"
-              checked={cat === "technology"}
-              name="cat"
-              value="technology"
-              id="technology"
-              onChange={(e) => setCat(e.target.value)}
-            />
-            <label htmlFor="technology">Technology</label>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'technology'} name='cat' value='technology' id='technology' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='technology'>Technology</label>
           </div>
-          <div className="cat">
-            <input
-              type="radio"
-              checked={cat === "cinema"}
-              name="cat"
-              value="cinema"
-              id="cinema"
-              onChange={(e) => setCat(e.target.value)}
-            />
-            <label htmlFor="cinema">Cinema</label>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'cinema'} name='cat' value='cinema' id='cinema' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='cinema'>Cinema</label>
           </div>
-          <div className="cat">
-            <input
-              type="radio"
-              checked={cat === "design"}
-              name="cat"
-              value="design"
-              id="design"
-              onChange={(e) => setCat(e.target.value)}
-            />
-            <label htmlFor="design">Design</label>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'design'} name='cat' value='design' id='design' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='design'>Design</label>
           </div>
-          <div className="cat">
-            <input
-              type="radio"
-              checked={cat === "food"}
-              name="cat"
-              value="food"
-              id="food"
-              onChange={(e) => setCat(e.target.value)}
-            />
-            <label htmlFor="food">Food</label>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'food'} name='cat' value='food' id='food' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='food'>Food</label>
+          </div>
+          <div className='cat'>
+            <input type='radio' checked={cat === 'mathematical_analysis'} name='cat' value='mathematical_analysis' id='food' onChange={e => setCat(e.target.value)} />
+            <label htmlFor='mathematical_analysis'>数学分析</label>
           </div>
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Write;
+export default Write

@@ -1,5 +1,5 @@
 $lightGreen: #b9e7e7;
-$mainRed: #91302B;
+$mainRed: #91302b;
 $mainGrey: #626262;
 
 * {
@@ -10,6 +10,7 @@ $mainGrey: #626262;
 .app {
   display: flex;
   justify-content: center;
+
   .container {
     width: 100%;
 
@@ -70,28 +71,30 @@ $mainGrey: #626262;
     }
 
     //NAVBAR
+    .navbar-container {
+      position: relative;
 
-    .navbar {
-      background-color: #9E2625;
-      color: white;
-      height: 100px;
-      padding: 1rem 8rem;
+      .navbar {
+        background-color: $mainRed;
+        color: white;
+        height: 4rem;
 
-      .container {
-        padding: 10px 0px;
+        padding: 1rem 2rem;
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         .logo {
           img {
-            width: 361px;
-            height: 77px;
+            width: 300px;
+            // height: 77px;
           }
         }
+
         .links {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 3rem;
 
           h6 {
             font-size: 16px;
@@ -121,6 +124,11 @@ $mainGrey: #626262;
             }
           }
         }
+      }
+      .personal-info-card {
+        position: absolute;
+        right: 2.5rem;
+        top: 5rem;
       }
     }
 
@@ -165,7 +173,7 @@ $mainGrey: #626262;
             position: relative;
 
             &::after {
-              content: "";
+              content: '';
               width: 100%;
               height: 100%;
               background-color: $lightGreen;
@@ -239,6 +247,7 @@ $mainGrey: #626262;
           align-items: center;
           gap: 10px;
           font-size: 14px;
+
           img {
             width: 50px;
             height: 50px;
@@ -272,6 +281,7 @@ $mainGrey: #626262;
           line-height: 30px;
         }
       }
+
       .menu {
         flex: 2;
         display: flex;
@@ -320,8 +330,7 @@ $mainGrey: #626262;
     //WRITE
 
     .add {
-      // margin-top: 20px;
-      padding: 3rem 0;
+      padding: 3rem 8rem;
       display: flex;
       gap: 20px;
 
@@ -357,34 +366,35 @@ $mainGrey: #626262;
         .item {
           border: 1px solid lightgray;
           padding: 10px;
-          flex:1;
+          flex: 1;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
           font-size: 12px;
           color: #555;
 
-          h1{
+          h1 {
             font-size: 20px;
           }
 
-          .file{
+          .file {
             text-decoration: underline;
             cursor: pointer;
           }
 
-          .buttons{
+          .buttons {
             display: flex;
             justify-content: space-between;
 
-            :first-child{
+            :first-child {
               cursor: pointer;
               color: teal;
               background-color: white;
               border: 1px solid teal;
               padding: 3px 5px;
             }
-            :last-child{
+
+            :last-child {
               cursor: pointer;
               color: white;
               background-color: teal;
@@ -393,7 +403,7 @@ $mainGrey: #626262;
             }
           }
 
-          .cat{
+          .cat {
             display: flex;
             align-items: center;
             gap: 2px;

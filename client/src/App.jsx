@@ -1,17 +1,13 @@
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Route,
-  Outlet,
-} from "react-router-dom";
-import Register from "./pages/Register";
-import Login from "./pages/Login";
-import Write from "./pages/Write";
-import Home from "./pages/Home";
-import Single from "./pages/Single";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
-import "./style.scss"
+import { createBrowserRouter, RouterProvider, Route, Outlet } from 'react-router-dom'
+import Register from './pages/Register'
+import Login from './pages/Login'
+import Write from './pages/Write'
+import Home from './pages/Home'
+import Single from './pages/Single'
+import Navbar from './components/Navbar'
+import Footer from './components/Footer'
+import { ConfigProvider } from 'antd'
+import './style.scss'
 
 const Layout = () => {
   return (
@@ -20,46 +16,59 @@ const Layout = () => {
       <Outlet />
       <Footer />
     </>
-  );
-};
+  )
+}
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
-        path: "/",
+        path: '/',
         element: <Home />,
       },
       {
-        path: "/post/:id",
+        path: '/post/:id',
         element: <Single />,
       },
       {
-        path: "/write",
+        path: '/write',
         element: <Write />,
       },
     ],
   },
   {
-    path: "/register",
+    path: '/register',
     element: <Register />,
   },
   {
-    path: "/login",
+    path: '/login',
     element: <Login />,
   },
-]);
+])
 
 function App() {
   return (
-    <div className="app">
-      <div className="container">
-        <RouterProvider router={router} />
+    <div className='app'>
+      <div className='container'>
+        <ConfigProvider
+          theme={{
+            token: {
+              // Seed Token，影响范围大
+              colorPrimary: '#91302b',
+              // borderRadius: 2,
+
+              // 派生变量，影响范围小
+              // colorBgContainer: '#f6ffed',
+            },
+          }}
+        >
+          <RouterProvider router={router} />
+        </ConfigProvider>
       </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
